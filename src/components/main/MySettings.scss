@@ -1,0 +1,283 @@
+@import "~bootstrap/scss/bootstrap";
+@import "../variables";
+
+.my-settings-modal {
+  @include media-breakpoint-down(xs) {
+    margin: 0 !important;
+  }
+  .modal-content {
+    @include media-breakpoint-down(xs) {
+      height: 100vh;
+      border-radius: 0 !important;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      @include media-breakpoint-down(xs) {
+        border-radius: 0 !important;
+      }
+      .modal-title {
+        display: flex;
+        align-items: center;
+        img {
+          width: 63.7px;
+          height: 63.7px;
+          margin-left: 6px;
+          margin-right: 28.3px;
+          border-radius: 50%;
+        }
+        .my-settings-title {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          @include media-breakpoint-up(md) {
+            width: 257px;
+          }
+          @include media-breakpoint-up(lg) {
+            width: 558px;
+          }
+          @include media-breakpoint-up(xl) {
+            width: 897px;
+          }
+        }
+      }
+      .modal-close {
+        @include themify($themes) {
+          background: themed("colorPrimary");
+        }
+        &:hover {
+          background: white;
+          svg g {
+            @include themify($themes) {
+              stroke: themed("colorPrimary");
+            }
+          }
+        }
+        .sm {
+          display: inline;
+          @include media-breakpoint-up(md) {
+            display: none;
+          }
+        }
+        .lg {
+          display: none;
+          @include media-breakpoint-up(md) {
+            display: inline;
+          }
+        }
+      }
+    }
+    .modal-body {
+      @include media-breakpoint-up(xl) {
+        margin: -15px 0 0 0;
+      }
+      .account-settings-title {
+        text-align: center;
+        color: $mid-blue;
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 9px;
+        @include media-breakpoint-up(xl) {
+          margin-top: 9px;
+        }
+      }
+      .account-settings-option {
+        font-size: 30px;
+        opacity: 0.8;
+        margin: 0 -16px;
+        padding: 11px 20px;
+        color: #484848;
+        cursor: pointer;
+        &.active {
+          color: #646565;
+          background-color: darken(#ececec, 10%);
+        }
+      }
+      .account-settings-content {
+        background-color: #ececec;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 -16px;
+        padding: 24px 42px;
+        &.bottom {
+          background-color: #f5f5f5;
+          @include media-breakpoint-up(xl) {
+            background-color: #ececec;
+          }
+          .account-content-title {
+            font-size: 28px;
+            margin-left: -36px;
+            @include media-breakpoint-up(xl) {
+              font-size: 63px;
+              font-weight: bold;
+            }
+          }
+          .account-content-excerpt {
+            margin-bottom: 37px;
+          }
+          button {
+            margin-top: 48px;
+            height: auto;
+            width: min-content;
+            @include media-breakpoint-up(sm) {
+              width: max-content;
+            }
+          }
+        }
+        .account-content-title {
+          font-size: 32px;
+          font-weight: bold;
+          color: $mid-blue;
+          margin-bottom: 26px;
+          @include media-breakpoint-up(xl) {
+            font-size: 63px;
+            font-weight: bold;
+          }
+        }
+        .account-content-excerpt {
+          margin-top: 37px;
+          font-size: 22px;
+          color: #484848;
+          text-align: center;
+          line-height: 1.23;
+        }
+      }
+      .account-privacy-content {
+        background-color: #ececec;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 -16px;
+        padding: 24px 22px;
+        .account-content-title {
+          font-size: 32px;
+          font-weight: bold;
+          color: $mid-blue;
+          margin-bottom: 26px;
+          @include media-breakpoint-up(xl) {
+            font-size: 63px;
+            font-weight: bold;
+          }
+        }
+        .account-privacy-excerpt {
+          font-size: 25px;
+          font-weight: 500;
+          color: $mid-blue;
+          background-color: $pale-grey;
+          border-radius: 34px;
+          padding: 15px 25px;
+          margin: -6px -2px 0 -2px;
+          text-align: center;
+        }
+        .settings-preview {
+          width: 100%;
+          margin: 0 -20px;
+          border: solid 1px $warm-grey;
+          border-radius: 15px;
+          background-color: white;
+          margin: 20px 0 20px 0;
+          // padding: 15px;
+          .preview-title {
+            background-color: #484848;
+            color: white;
+            font-size: 24px;
+            font-weight: 500;
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+            padding-left: 17px;
+          }
+          .preview-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 44px 18px 44px;
+            .preview-image {
+              border-radius: 50%;
+              width: 162px;
+              height: 162px;
+              background-color: #9a9a9a;
+            }
+            .fullname {
+              margin-top: 12px;
+              font-size: 25px;
+              font-weight: bold;
+              color: $greyish-brown;
+              @include truncate(250px);
+            }
+            .preview-item {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              font-size: 13px;
+              .preview-attr {
+                font-weight: 500;
+                color: $dark-blue-grey;
+              }
+              .preview-val {
+                color: $greyish-brown-78;
+                @include truncate(174px);
+              }
+            }
+            .shared {
+              margin-top: 14px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .shared-title {
+                text-transform: uppercase;
+                font-size: 13px;
+                font-weight: bold;
+                color: $silver;
+              }
+            }
+          }
+        }
+        .profile-info-form {
+          .form-title {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 500;
+            color: #747474;
+            margin-bottom: 20px;
+          }
+          .form-group {
+            label {
+              font-size: 20px;
+              opacity: 0.71;
+              font-weight: 500;
+              color: #747474;
+            }
+          }
+          .submit-section {
+            display: flex;
+            justify-content: center;
+            margin: 23px 0 0 0;
+          }
+        }
+        .display-options {
+          margin-top: 37px;
+          .option-title {
+            font-size: 30px;
+            font-weight: 600;
+            color: #484848;
+            margin-bottom: 24px;
+          }
+          .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            label {
+              font-size: 34px;
+              color: #484848;
+              margin: 0;
+              &:first-child {
+                margin-right: 18.5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

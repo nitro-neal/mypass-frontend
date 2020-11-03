@@ -1,0 +1,89 @@
+@import "~bootstrap/scss/bootstrap";
+@import "../../variables";
+
+.document-summary-container {
+  @include media-breakpoint-down(sm) {
+    // overflowed page when no documents
+    // margin: 0 51px;
+    margin: 0;
+    .document-item {
+      min-height: 255px;
+      padding: 19px 0;
+    }
+    .title {
+      font-size: 16px;
+      line-height: 1.19;
+    }
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.27;
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    padding: 7.5px;
+    margin: 0;
+    .document-item {
+      min-height: 255px;
+      padding: 19px 0;
+    }
+    .title {
+      font-size: 16px;
+      line-height: 1.19;
+    }
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.27;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    padding: 24px;
+  }
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  .document-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &:hover {
+      background: $hover-color;
+      cursor: pointer;
+    }
+    .badge-container {
+      padding: 8px 0;
+    }
+    .title {
+      font-size: 25px;
+      line-height: 30px;
+    }
+    .subtitle {
+      font-size: 20px;
+      margin-top: 0;
+    }
+    .claim-action {
+      margin-top: 22px;
+    }
+    .no-shares {
+      height: 92px;
+    }
+    .notarized {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .notary-label {
+        font-size: 22px;
+        margin-left: 12px;
+        font-weight: bold;
+        @include themify($themes) {
+          color: themed("colorPrimary");
+        }
+      }
+      svg > path {
+        @include themify($themes) {
+          fill: themed("colorPrimary");
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import './variables.scss';
+
+.app-container {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  // this div is for debug purposes
+  @include themify($themes) {
+    background-color: themed('backgroundColor');
+    // color: themed('color');
+  }
+  .screen-info {
+    // display: none;
+    // @include themify($themes) {
+    //   color: themed('buttonTextColor');
+    // }
+    position: absolute;
+    background-color: yellow;
+    color: black;
+    &::before {
+      @include media-breakpoint-up(xs) {content: "xs";}
+      @include media-breakpoint-up(sm) {content: "sm";}
+      @include media-breakpoint-up(md) {content: "md";}
+      @include media-breakpoint-up(lg) {content: "lg";}
+      @include media-breakpoint-up(xl) {content: "xl";}
+    }
+  }
+  .page-container {
+    display: flex;
+    height: 100%;
+  }
+}
+
+.modal-content {
+  padding: 8px;
+}

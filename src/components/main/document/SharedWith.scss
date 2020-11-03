@@ -1,0 +1,74 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../../variables';
+
+.shared-with-container {
+  @include media-breakpoint-down(sm) {
+    height: 40px;
+    .shared-with-image {
+      width: 40px;
+      height: 40px;
+    }
+    .shared-with-other {
+      width: 40px;
+      height: 40px;
+      line-height: 36px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .shared-with-small {
+      width: 31.5px;
+      height: 31.5px;
+      line-height: 20px;
+      font-size: 20px;
+      font-weight: 500;
+      left: 9.66px;
+    }
+  }
+  @include media-breakpoint-up(sm) {
+    height: 58px;
+    .shared-with-image {
+      width: 58px;
+      height: 58px;
+    }
+    .shared-with-other {
+      width: 58px;
+      height: 58px;
+      line-height: 58px;
+      font-size: 30px;
+    }
+    .shared-with-small {
+      width: 49px;
+      height: 49px;
+      line-height: 49px;
+      font-size: 25.3px;
+      left: 14px;
+    }
+  }
+  margin: 2px;
+  padding-top: 2px;
+  .shared-with-image {
+    object-fit: contain;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    bottom: 26px;
+  }
+  .shared-with-other {
+    object-fit: contain;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    position:relative;
+    font-weight: normal;
+    @include themify($themes) {
+      background-color: themed('colorPrimary');
+    }
+  }
+}
+.shared-multi {
+  left: -7px;
+  position: relative;
+}

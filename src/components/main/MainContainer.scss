@@ -1,0 +1,219 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import "../variables";
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  @include media-breakpoint-up(sm) {
+    min-height: 100vh;
+    margin: 0 30px 0 0;
+    #main-top-bar-sm {
+      display: none;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    margin: 0;
+    #main-top-bar-sm {
+      margin: 20px 18px 14px 18px;
+      display: flex;
+      align-items: center;
+      svg {
+        z-index: 2;
+      }
+    }
+  }
+
+  #main-top-bar {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+    @include media-breakpoint-up(md) {
+      // display: table;
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+    }
+    width: 100%;
+    padding-left: 10px;
+
+    #main-logo {
+      cursor: pointer;
+      display: table-cell;
+      width: 95px;
+      padding: 20px 10px 20px 10px;
+    }
+
+    #main-search {
+      @include media-breakpoint-up(md) {
+        margin: 0 20px 0 20px;
+      }
+      @include media-breakpoint-up(lg) {
+        margin: 0 127px 0 80px;
+      }
+      height: 56px;
+      flex: 1;
+      position: relative;
+      top: 4px;
+    }
+
+    #main-profile {
+      display: table-cell;
+      width: 90px;
+      cursor: pointer;
+      text-align: right;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    margin: 10px 40px 0 0;
+  }
+  @include media-breakpoint-up(xl) {
+    margin: 10px 107px 0 0;
+  }
+
+  // #main-search-sm {
+  //   display: none;
+  // }
+
+  @include media-breakpoint-down(sm) {
+    #main-search-sm {
+      display: block;
+      margin: 20px;
+    }
+  }
+
+  .main-page {
+    display: flex;
+    flex-grow: 1;
+    // ios bug
+    // https://stackoverflow.com/a/43683067
+    flex-shrink: 0;
+
+    @include media-breakpoint-up(md) {
+      .main-side {
+        margin-top: 44.6px;
+        border-top-right-radius: 74px;
+        display: flex;
+        min-width: 134px;
+        //height: 100%;
+        @include themify($themes) {
+          background: themed("colorPrimary");
+        }
+      }
+    }
+
+    .main-section {
+      display: flex;
+      width: 100%;
+      // @include media-breakpoint-up(sm) {
+      //   margin-left: 15px;
+      //   margin-bottom: 92px;
+      //   .main-content {
+      //     padding: 14px 0 24px 66px;
+      //   }
+      // }
+      @include media-breakpoint-up(md) {
+        .main-content {
+          padding: 14px 0 24px 20px;
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        margin-left: 15px;
+        margin-bottom: 92px;
+        .main-content {
+          padding: 14px 0 24px 20px;
+        }
+      }
+      @include media-breakpoint-up(xl) {
+        .main-content {
+          padding: 14px 0 24px 66px;
+        }
+      }
+      .main-content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.search {
+  flex-grow: 1;
+}
+
+.account-circle {
+  &.lg {
+    width: 188px;
+    height: 188px;
+    font-size: 78px;
+    font-weight: 600;
+  }
+  &.md {
+    width: 89px;
+    height: 89px;
+    font-size: 37px;
+    font-weight: 600;
+  }
+  &.sm {
+    width: 64px;
+    height: 64px;
+    font-size: 26.6px;
+  }
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid white;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  // line-height: 89px;
+  //position:relative;
+  //left:-20px;
+  //bottom: 26px;
+  @include themify($themes) {
+    background-color: themed("colorPrimary");
+  }
+}
+
+.document-type-container {
+  margin: 0 15px 15px 15px;
+}
+
+.document-type-selected {
+  margin-top: 24px;
+}
+
+.modal-footer-center {
+  justify-content: center !important;
+}
+
+.button-wide {
+  width: 150px;
+}
+
+.document-add-new {
+  @include media-breakpoint-down(sm) {
+    display: none;
+  }
+  text-align: center;
+  padding: 24px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  &:hover {
+    background: $hover-color;
+    cursor: pointer;
+  }
+}
+
+// carrier
+.other-owner-list {
+  margin-top: 18px;
+}
+.other-owner-listitem {
+  cursor: pointer;
+  &:hover {
+    background: #eee;
+  }
+}

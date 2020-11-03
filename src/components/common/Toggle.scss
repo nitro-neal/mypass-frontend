@@ -1,0 +1,199 @@
+@import '../variables';
+
+.switch {
+  position: relative;
+  display: inline-block;
+
+  margin-bottom: 0;
+  cursor: pointer;
+  &.xs {
+    $width: 46px;
+    $height: 15px;
+    $fontSize: 7px;
+    $top: 2.5px;
+    $side: 5.5px;
+    width: $width;
+    height: $height;
+    input {
+      &:checked + .slider:before {
+        -webkit-transform: translateX($width / 2);
+        -ms-transform: translateX($width / 2);
+        transform: translateX($width / 2);
+      }
+    }
+    .slider {
+      &:before {
+        height: $height;
+        width: $width / 2;
+      }
+    }
+    .yes {
+      font-size: $fontSize;
+      top: $top;
+      left: $side;
+    }
+    .no {
+      font-size: $fontSize;
+      top: $top;
+      right: $side;
+    }
+  }
+  &.sm {
+    $width: 80px;
+    $height: 23px;
+    $fontSize: 12px;
+    $top: 3.4px;
+    $side: 9.5px;
+    width: $width;
+    height: $height;
+    input {
+      &:checked + .slider:before {
+        -webkit-transform: translateX($width / 2);
+        -ms-transform: translateX($width / 2);
+        transform: translateX($width / 2);
+      }
+    }
+    .slider {
+      &:before {
+        height: $height;
+        width: $width / 2;
+      }
+    }
+    .yes {
+      font-size: $fontSize;
+      top: $top;
+      left: $side;
+    }
+    .no {
+      font-size: $fontSize;
+      top: $top;
+      right: $side;
+    }
+  }
+  &.md {
+    $width: 92px;
+    $height: 27px;
+    $fontSize: 15px;
+    $top: 2.5px;
+    $side: 10px;
+    width: $width;
+    height: $height;
+    input {
+      &:checked + .slider:before {
+        -webkit-transform: translateX($width / 2);
+        -ms-transform: translateX($width / 2);
+        transform: translateX($width / 2);
+      }
+    }
+    .slider {
+      &:before {
+        height: $height;
+        width: $width / 2;
+      }
+    }
+    .yes {
+      font-size: $fontSize;
+      top: $top;
+      left: $side;
+    }
+    .no {
+      font-size: $fontSize;
+      top: $top;
+      right: $side;
+    }
+  }
+  &.lg {
+    $width: 134px;
+    $height: 39px;
+    $fontSize: 21px;
+    $top: 4px;
+    $side: 20px;
+    width: $width;
+    height: $height;
+    input {
+      &:checked + .slider:before {
+        -webkit-transform: translateX($width / 2);
+        -ms-transform: translateX($width / 2);
+        transform: translateX($width / 2);
+      }
+    }
+    .slider {
+      &:before {
+        height: $height;
+        width: $width / 2;
+      }
+    }
+    .yes {
+      font-size: $fontSize;
+      top: $top;
+      left: $side;
+    }
+    .no {
+      font-size: $fontSize;
+      top: $top;
+      right: $side;
+    }
+  }
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:focus + .slider {
+      box-shadow: 0 0 2px #ccc;
+    }
+    &:checked ~ span {
+      &.yes {
+        color: white;
+      }
+      &.no {
+        color: #afafaf;
+      }
+    }
+  }
+
+  .slider {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include themify($themes) {
+      background: linear-gradient(90deg, themed('colorPrimary') 50%, #d95868 50%);
+    }
+    border-radius: 34px;
+    -webkit-transition: .4s;
+    transition: .4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      background-color: #fff;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+  }
+
+  .yes {
+    &:before {
+      content: 'Yes';
+    }
+    color: #afafaf;
+    font-weight: 500;
+    position: absolute;
+    transition: color .4s;
+  }
+
+  .no {
+    &:before {
+      content: 'No';
+    }
+    color: #fff;
+    font-weight: 500;
+    position: absolute;
+    transition: color .4s;
+  }
+}

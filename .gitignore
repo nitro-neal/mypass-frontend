@@ -1,0 +1,13 @@
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
+.env.test
+
+# generate output
+dist
+
+# IDE / Editor
+.idea
+.vscode

@@ -1,0 +1,79 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+  slack: circleci/slack@3.4.2
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+  deploy-staging:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-128-18-201.us-east-2.compute.amazonaws.com "bash -s" < deployStaging.sh
+  chrome_version:
+    docker:
+      - image: circleci/node:11-browsers
+    working_directory: ~/repo
+    steps:
+      - run: google-chrome --product-version
+      - run: echo "Starting Selenium testing"
+      - checkout
+      - run: yarn install:e2e
+      - run:
+          name: set var
+          command: echo "export CHROME_VER=`google-chrome --product-version`" >> $BASH_ENV
+      - run: echo "$CHROME_VER"
+      - run: sudo webdriver-manager update --versions.chrome=$CHROME_VER
+      - run: yarn test:e2e_single_file
+
+  test:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - run: sudo apt-get update && sudo apt-get install -y python-dev
+      - run: sudo curl -O https://bootstrap.pypa.io/get-pip.py
+      - run: sudo python get-pip.py
+      - run: sudo pip install awscli --upgrade
+      - run: aws --version
+      - run: aws s3 ls
+      - run: cp .env.prod .env
+      - run: ls -a
+      - run: npm run deploy
+      - slack/status:
+          webhook: ${SLACK_WEBHOOK}
+          success_message: >
+            mypass frontend has deployed!
+          failure_message: >
+            mypass frontend deploy has failed!
+          only_for_branches: main
+
+workflows:
+  version: 2.0
+  test-and-deploy:
+    jobs:
+      - build-and-test
+      - deploy-staging:
+          requires:
+            - build-and-test
+      - chrome_version:
+          requires:
+            - deploy-staging
+  build:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only:
+                - main
